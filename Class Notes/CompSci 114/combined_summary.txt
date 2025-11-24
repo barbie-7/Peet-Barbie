@@ -1,0 +1,93 @@
+### Introduction to Programming in Python
+**Authors:** Sedgewick, Wayne, Dondero  
+**Last Updated:** October 20, 2023  
+**Course URL:** [Princeton's Intro to Programming in Python](https://introcs.cs.princeton.edu/python)
+
+### 1. Basic Programming Concepts
+- **Why Learn Programming?**
+  - Enables you to customize solutions.
+  - Allows creativity and problem-solving.
+  - Important for modern intellectual tasks.
+
+- **Languages:**
+  - **Natural Language:** Easy for humans, difficult for computers.
+  - **Machine Language:** Difficult for humans, easy for computers.
+  - **High-Level Language:** Balanced tradeoff, facilitates abstraction.
+
+### 2. Python Features:
+- Widely used and continually developed since the early 1990s.
+- Supports modern abstractions.
+- Extensive libraries available (e.g., pandas, scikit-learn).
+
+### 3. Basic Built-in Data Types
+- **int**: Integers
+- **float**: Floating-point numbers
+- **str**: Strings (sequences of characters)
+- **bool**: Boolean values (True, False)
+
+### 4. Flow Control
+- **Conditionals:** Control execution flow (`if`, `else`, `elif`).
+- **Loops:** Repeat execution (`while`, `for`).
+
+### 5. Programming Basics
+- **Creating a Python Program:**
+  - Write code in a text editor and save it as `.py` file.
+  - Compile with `python3 -m py_compile yourfile.py`.
+  - Execute using `python3 yourfile.py`.
+
+- **Example Program: Hello, World**
+```python
+import stdio
+
+def main():
+    stdio.writeln('Hello, World!')
+
+if __name__ == '__main__':
+    main()
+```
+
+### 6. Data Handling
+- **Variables**: Names that refer to data values.
+- **Type Conversion**: Built-in methods such as `int()`, `str()`, and others for converting data types.
+
+### 7. Expressions
+- Understanding how to use operators to manipulate data.
+- **Arithmetic and Comparison Operators:**
+  - Arithmetic: `+`, `-`, `*`, `/`, `//`, `%`
+  - Comparison: `<`, `<=`, `>`, `>=`, `==`, `!=`
+
+### 8. Arrays and Lists
+- **Arrays**: Use `stdarray` to create and manipulate fixed-size arrays.
+- **Python Lists**: Dynamic arrays allowing for flexibility in size.
+- **Creating an Array Example:**
+```python
+import stdarray
+N = 10
+a = stdarray.create1D(N, 0.0)  # Creates an array of 10 elements initialized to 0.0
+```
+
+- **Accessing Array Elements**: Indexing starts at 0.
+- **Iterating Over Arrays**: Use loops to process each element.
+
+### 9. Multidimensional Arrays
+- **Two-Dimensional Arrays**: Used for matrix representations.
+```python
+a = stdarray.create2D(M, N, 0.0)  # Creates an MxN array initialized to 0.0
+```
+
+### 10. Typical Use Cases for Arrays
+- Data storage, manipulating collections of related values, handling tabular data like scores or images.
+
+### 11. Debugging
+- Involves identifying and fixing errors in the code, often through trial and feedback cycles.
+- Important to trace issues and ensure code behaves as expected.
+
+### 12. Summary
+- Programming in Python involves learning to use and manipulate data types, control structures, and functions effectively.
+- Emphasis on writing correct, efficient, and maintainable code.
+
+### Exercises
+- Implement a program that collects and processes input using arrays.
+- Experiment with conditional statements and loops to solve practical problems.
+
+By mastering these basics, you will build a solid framework for further studies in programming and computer science.

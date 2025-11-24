@@ -1,0 +1,94 @@
+### Introduction to Programming in Python: Conditionals & Loops
+
+**Key Concepts:**
+1. **Control Flow**:
+   - Determines the sequence of statements executed in a program.
+   - Managed through **conditionals** (like `if` statements) and **loops** (like `while` and `for` loops).
+
+2. **Conditionals**:
+   - **If Statement**: Executes a block of code if a condition is true. 
+     ```python
+     if (condition):
+         # code to execute if condition is true
+     else:
+         # code to execute if condition is false
+     ```
+   - **Example**: Sorting two numbers.
+     ```python
+     if (b < a):
+         t = a
+         a = b
+         b = t
+     ```
+
+3. **Loops**:
+   - **While Loop**: Repeats a block of code while a condition is true.
+     ```python
+     while (condition):
+         # code to execute
+     ```
+   - **For Loop**: Iterates over a sequence or range.
+     ```python
+     for <variable> in range(<start>, <end>):
+         # code to execute
+     ```
+   - **Do-While Loop**: Executes code at least once and checks condition after.
+     ```python
+     while True:
+         # code to execute
+         if (condition):
+             break
+     ```
+
+4. **Nesting**:
+   - Conditionals and loops can be nested inside each other for more complex control flows.
+     ```python
+     if (condition1):
+         if (condition2):
+             # nested code
+     ```
+
+5. **Debugging**:
+   - A vital part of programming involves finding and fixing errors in code.
+   - Types of errors:
+     - **Syntax Errors**: Mistakes in code formatting.
+     - **Runtime Errors**: Errors occurring during program execution.
+     - **Logic Errors**: Code runs but does not produce the correct result.
+
+**Practical Examples**:
+- **Coin Flip**: 
+   ```python
+   import stdrandom
+   def main():
+       if stdrandom.uniform() < 0.5:
+           stdio.writeln('Heads')
+       else:
+           stdio.writeln('Tails')
+   ```
+
+- **Powers of Two**:
+   ```python
+   def main():
+       n = int(sys.argv[1])
+       i = 0
+       v = 1
+       while (i <= n):
+           stdio.writeln(v)
+           i += 1
+           v *= 2
+   ```
+
+- **Nesting Example**:
+   ```python
+   for i in range(5):
+       for j in range(3):
+           stdio.writeln(f"i: {i}, j: {j}")
+   ```
+
+**Good Practices**:
+- Use conditionals to handle potential runtime errors.
+- Test programs with various inputs to ensure functionality.
+- Comment code to clarify intent and structure.
+
+### Summary
+Understanding conditionals and loops is essential for controlling the flow of a program in Python. These constructs allow programmers to implement logical decisions and repetitive tasks effectively while debugging skills are crucial for successful programming.
