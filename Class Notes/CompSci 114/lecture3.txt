@@ -1,0 +1,820 @@
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+https://introcs.cs.princeton.edu/python 
+Slides ported to Python by James Pope 
+Last updated on 2023/10/20 08:26 
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+https://introcs.cs.princeton.edu/python 
+3. Arrays 
+Slides ported to Python by James Pope 
+Last updated on 2023/10/20 08:26 1.4 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+3. Arrays 
+•Basic concepts 
+•Typical array-processing code 
+•Two-dimensional arrays INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+A Foundation for Programming 
+3any program you might want to write 
+object
+s
+functions and 
+modules 
+array
+s
+conditionals and 
+loops 
+Math text I/O 
+assignment 
+statements primitive data 
+types graphics, sound, and image 
+I/O 
+Ability to store and process 
+huge amounts of data arrays 
+
+
+4Arrays 
+Main purpose. Facilitate storage and manipulation of data. Examples. 
+•52 playing cards in a deck. 
+•100 thousand students in an online class. 
+•1 billion pixels in a digital image. 
+•4 billion nucleotides in a DNA strand. 
+•73 billion Google queries per year. 
+•86 billion neurons in the brain. 
+•50 trillion cells in the human body. 
+A data structure  is an arrangement of data that enables efficient processing by a program. 
+index value 
+0 2♥ 
+1 6♠ 
+2 A♦ 
+3 A♥ 
+... 
+49 3♣ 
+50 K♣ 
+51 4♠ 
+An array  is an indexed  sequence of values typically of the same type. 
+Note that indexing starts at 0 and 
+ends at length - 1 
+
+5Processing many values of the same type 
+a0 = 0.0 
+a1 = 0.0 
+a2 = 0.0 
+a3 = 0.0 
+a4 = 0.0 
+a5 = 0.0 
+a6 = 0.0 
+a7 = 0.0 
+a8 = 0.0 
+a9 = 0.0 
+... 
+a4 = 3.0 
+... 
+a8 = 8.0 
+... 
+x = a4 + a8 10 values, without arrays 
+tedious and error-prone code 
+a = stdarray.create1D(10, 0.0) 
+... 
+a[4] = 3.0 
+... 
+a[8] = 8.0 
+... 
+x = a[4] + a[8] 10 values, with an array 
+an easy alternative 
+stdarray.create1D(1000000, 0.0) 
+... 
+a[234567] = 3.0 
+... 
+a[876543] = 8.0 
+... 
+x = a[234567] + a[876543] 1 million values, with an array 
+scales to handle huge amounts of 
+data 
+
+Python Lists vs Arrays and the stdarray module 
+6Arrays are fixed-length data structures.  Python does not have an array data structure.  A Python 
+list is similar (creation, indexed access, indexed assignment, iteration) to an array but 
+variable-length. 
+The stdarray  module provides utility methods to create an array of n elements and initialize 
+to a given value.  Self-documenting. 
+x = stdarray.create1D( 3, 0.0 ) # len(x) = 3 
+x[0] = 0.30                     # len(x) = 3 
+x[1] = 0.60                     # len(x) = 3 
+x[2] = 0.10                     # len(x) = 3 
+x[3] = 0.99                     # IndexError! Python 
+"array" 
+double[] x = new double[3]; # x.length = 3 
+x[0] = 0.30;                # x.length = 3 
+x[1] = 0.60;                # x.length = 3 
+x[2] = 0.10;                # x.length = 3 
+x[3] = 0.99;                # IndexError! Java array (ﬁxed-length) 
+initializes to 0.0 array 
+x = []       # len(x) = 0 
+x += [0.30]  # len(x) = 1 
+x += [0.60]  # len(x) = 2 
+x += [0.10]  # len(x) = 3 
+x += [0.99]  # len(x) = 4 Python list (variable-length) 
+list 
+list concatenation (iterable) 
+
+7 More Usecases 
+●Save precomputed  values. 
+●Simplify repetitive  code. 
+
+
+Memory representation of an array 
+8Recall that variables point to objects in memory.  An array  is a data structure that stores variables 
+(implicit name) contiguously as a sequence of pointers.  This arrangement corresponds to the 
+computer's memory locations (see next slide). 
+Critical concepts 
+•Indices start at 0. 
+•Given i, the operation of accessing the value a[i]  is extremely efficient. 
+•The assignment b = a  makes the names b and a refer to the same array. it does not copy the array. 
+a 0
+1
+2
+3
+4'Clubs' 
+'Diamonds' 
+'Hearts' 
+'Spades' 
+it does not copy the array 
+
+Memory representation of an array 
+9Three useful array memory representations. 
+x 0
+1
+2
+30.30 
+0.60 
+0.10 
+1. Object Viewpoint 0.30 
+523 
+3
+002 
+998 
+741 
+0.10 
+0.60 000 
+001 
+002 
+003 
+122 
+123 
+124 
+997 
+998 
+999 523 
+524 
+525 
+526 
+741 
+742 length  of x x
+x[0] 
+x[1] 
+x[2] 
+2. Computer Memory Viewpoint 0 1 2
+0,30 0,60 0,10 
+3. Simplified Memory Viewpoint 
+Least exact but compact xaddress of x 
+
+Creating and initializing Arrays 
+1
+0operation typical code 
+Create and initialize  an array of a given length  a = stdarray.create1D(1000,0.0) 
+Assign and access  an array entry by index  a[i] = b[j] + c[k] 
+Refer to the length  of an array len( a)Basic support 
+operation typical code 
+Initialize to float type  a = stdarray.create1D(1000,0.0) 
+Initialize to str literal values letters  = [ 'a', 'b', 'c' ] 
+Initialize to int literal values ids = [ 143, 847, 91093 ] Declare, create and initialize options 
+BUT cost of creating an 
+array is proportional to its 
+length. Python list equivalent 
+   a = [] 
+  for i in range(1000): 
+     a += [0.0] 
+
+Array Mutability 
+11Reassigning an array element. 
+x 0
+1
+2
+30.30 
+0.60 
+0.10 
+x = [ 0.30, 0.60, 0.10 ] 
+... 
+... 
+x[1] = 0.99 
+... x 0
+1
+2
+30.30 
+0.60 
+0.10 
+0.99 
+Refer to text for reversing an array. 
+
+Array Iteration 
+1
+2Iterate ( visit) each element in array array element. 
+More compact if only sequence is 
+important but not the index. 
+x = [ 0.30, 0.60, 0.10 ] 
+total = 0.0 
+for i in range( len(x) ): 
+    value = x[i]    
+    total += value 
+average = total / len(x) Computes average of values in x 
+x = [ 0.30, 0.60, 0.10 ] 
+total = 0.0 
+for value in x: 
+    total += value 
+average = total / len(x) Without explicit indices 
+Can write elements in array to standard output as one line. 
+x = [ 0.30, 0.60, 0.10 ] 
+stdio.writeln(x) 
+>>> [0.3, 0.6, 0.1] 
+No control over format.  Iterate to provide 
+explicit formatting 
+
+Array Aliases 
+13Aliasing  when two variables refer 
+to the same object. x 0
+1
+2
+30.30 
+0.60 
+0.10 
+x = [ 0.30, 0.60, 0.10 ] 
+x 0
+1
+2
+30.30 
+0.60 
+0.10 
+0.99 y
+What is y[1]? x 0
+1
+2
+30.30 
+0.60 
+0.10 y
+y = x 
+x[1] = 0.99 Aliasing mutable objects (arrays 
+are mutable) is confusing and 
+should generally be avoided. 
+Note that str, int, float, and bool 
+are immutable and OK to have 
+multiple variables refer to them. 
+
+Array Copying 
+14x 0
+1
+2
+30.30 
+0.60 
+0.10 
+x = [ 0.30, 0.60, 0.10 ] 
+y = [] 
+for v in x: 
+    y += [v] 
+x[1] = 0.99 
+y 0
+1
+32
+0.30 
+0.60 
+0.10 x 0
+1
+2
+3y 0
+1
+32
+0.30 
+0.60 
+0.10 x 0
+1
+2
+30.99 
+
+Array Slicing 
+15Slicing  is shorthand ( syntactic sugar ) for creating a new array from an existing array. 
+x = [ 0.30, 0.60, 0.10 ] 
+i = 0 
+j = len(x) 
+y = x[i:j] # [i,j) 
+x = [ 0.30, 0.60, 0.10 ] 
+i = 0 
+j = len(x) 
+# Slicing equivalent 
+y = [] 
+while( i < j ): 
+    y += [ x[i] ] 
+    i += 1 
+Slicing  default for i is 0 and the default for j is len(x), so can be shortened 
+x = [ 0.30, 0.60, 0.10 ] 
+y = x[:] 
+Though less typing same work proportional to len(x) for the computer. 
+x = [ 5, 2, 8, 6, 5, 6, 2, 4 ] 
+y = x[2:5] Pop quiz what is y? 0  1  2  3  4  5  6  7 
+y = [ 8, 6, 5 ] 
+
+Programming with arrays: typical examples 
+16
+a = stdarray.create1D(N,0.0) 
+for i in range(N): 
+   a[i] = stdrandom.uniform() Create an array with N random values 
+for i in range(N): 
+   stdio.writeln(a[i]) Print array values, one per line 
+sum = 0.0 
+for i in range(N): 
+   sum += a[i] 
+average = sum / N Compute the average of array values 
+max = a[0] 
+for i in range(1,N): 
+   if (a[i] > max): max = a[i] Find the maximum of array values 
+b = stdarray.create1D(N,0.0) 
+for i in range(N): 
+   b[i] = a[i] Copy to another array For brevity, N is desired length for array. 
+exe    =     sys.argv[0] 
+stake  = int(sys.argv[1]) 
+goal   = int(sys.argv[2]) 
+trials = int(sys.argv[3]) Access command-line args in system array 
+
+17 Vector Dot Product 
+Dot product.  Given two vectors x[] and y[] of length N, their dot product is the sum of the products of 
+their corresponding components. 
+x = [ 0.3, 0.6, 0.1 ] 
+y = [ 0.5, 0.1, 0.4 ]  
+N = len(x)
+sum = 0.0        
+for i in range (0,N):
+   sum = sum + x[i]*y[i]
+
+
+18 Programming with Arrays: Typical Bugs 
+
+
+19 Summary 
+
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+3. Arrays 
+•Basic concepts 
+•Examples of array-processing code 
+•Two-dimensional arrays INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+Shuffling a Deck 
+
+
+22 Setting Array Values at Compile Time 
+Ex.  Print a random card. 
+RANK = ["2", "3", "4", "5", "6", "7", "8", "9",
+        "10" , "Jack" , "Queen" , "King" , "Ace" ]
+SUIT = ["Clubs" , "Diamonds" , "Hearts" , "Spades" ]
+i = random.randrange (0,len (RANK ))    // between 0 and 12 
+j = random.randrange (0,len (SUIT ))   // between 0 and 3 
+stdio.writeln (RANK [i] + " of " + SUIT [j])
+
+
+23 Exercise: Printing Deck 
+Ex.  Create a deck of playing cards and print them out. 
+Q.  In what order does it output them? 
+                  A.                          B.deck = [] 
+for rank in RANK: 
+    for suit in SUIT: 
+        card = rank  + " of " + suit 
+        deck  += [ card ]
+for i in range (0, len(RANK )* len(SUIT )):
+   stdio.writeln (deck [i])typical array-processing 
+code changes values 
+at runtime 
+two of clubs 
+two of diamonds 
+two of hearts 
+two of spades 
+three of clubs 
+...two of clubs 
+three of clubs 
+four of clubs 
+five of clubs 
+six of clubs 
+...
+
+
+24 Exercise: Printing Deck 
+Ex.  Create a deck of playing cards and print them out. 
+Q.  In what order does it output them? 
+                  A.                          B.deck = [] 
+for rank in RANK: 
+    for suit in SUIT: 
+        card = rank  + " of " + suit 
+        deck  += [ card ]
+for i in range (0, len(RANK )* len(SUIT )):
+   stdio.writeln (deck [i])typical array-processing 
+code changes values 
+at runtime 
+two of clubs 
+two of diamonds 
+two of hearts 
+two of spades 
+three of clubs 
+...two of clubs 
+three of clubs 
+four of clubs 
+five of clubs 
+six of clubs 
+...
+
+
+25 Shuffling 
+Goal.  Given an array, rearrange its elements in random  order. 
+Shuffling algorithm. 
+●In iteration i, pick random card from deck[i]  through deck[N-1] , with 
+each card equally likely. 
+●Exchange it with deck[i] .
+N = len(deck )
+for i in range (0, N):
+    r = random.randrange (i,N)
+    t = deck [r]
+    deck [r] = deck [i]
+    deck [i] = tbetween i and N-1 
+swap  idiom 
+
+26 Shuffling a Deck of Cards:  deckshuffle.py 
+import sys
+import stdio 
+import random 
+def main(): 
+       RANK = ["2", "3", "4", "5", "6", "7", "8", "9",
+              "10" , "Jack" , "Queen" , "King" , "Ace" ]
+  SUIT = ["Clubs" , "Diamonds" , "Hearts" , "Spades" ]
+       deck = [] 
+      for rank in RANK: 
+        for suit in SUIT: 
+             card = rank  + " of " + suit 
+             deck  += [ card ]
+       N = len(deck )
+      for i in range (0, N):
+          r = random.randrange (i,N)
+          t = deck [r]
+          deck [r] = deck [i]
+          deck [i] = t
+       for i in range (0, N):
+          stdio.writeln (deck [i])
+if __name__  == "__main__ ": main() build the 
+deck 
+shuffle 
+print shuffled 
+deck 
+
+27 Shuffling a Deck of Cards 
+% python3 deckshuffling.py 
+5 of Clubs 
+Jack of Hearts 
+9 of Spades 
+10 of Spades 
+9 of Clubs 
+7 of Spades 
+6 of Diamonds 
+7 of Hearts 
+7 of Clubs 
+4 of Spades 
+Queen of Diamonds 
+10 of Hearts 
+5 of Diamonds 
+Jack of Clubs 
+Ace of Hearts 
+...
+5 of Spades % python3 deckshuffling.py 
+10 of Diamonds 
+King of Spades 
+2 of Spades 
+3 of Clubs 
+4 of Spades 
+Queen of Clubs 
+2 of Hearts 
+7 of Diamonds 
+6 of Spades 
+Queen of Spades 
+3 of Spades 
+Jack of Diamonds 
+6 of Diamonds 
+8 of Spades 
+9 of Diamonds 
+...
+10 of Spades 
+
+Without Replacement 
+Initialization 
+Printing Algorithm 
+
+Without Replacement 
+Swap 
+
+
+Coupon Collector 
+
+
+31 Coupon Collector Problem 
+Coupon collector problem.  Given N different card types, how many 
+do you have to collect before you have (at least) one of each type? 
+Simulation algorithm.  Repeatedly choose an integer i between 0 and N-1.
+Stop when we have at least one card of every type. 
+Q.  How to check if we've seen a card of type i?
+A.  Maintain a boolean array so that found[i]  is true if we've already collected a card of type i.assuming each possibility is equally 
+likely for each card that you collect 
+
+
+32 Coupon Collector:  Implementation 
+type of next card 
+(between 0 and N-1) 
+
+33 Coupon Collector:  Debugging 
+Debugging.  Add code to print contents of all variables. 
+Challenge.  Debugging with arrays requires tracing many variables. 
+
+
+34 Coupon Collector:  Mathematical Context 
+Coupon collector problem.  Given N different possible cards, how many do you have to collect before 
+you have (at least) one of each type? 
+Fact.  About N (1 + 1/2 + 1/3 + … + 1/N)  ~  N ln N. 
+
+
+35 Exercise: Coupon Collector 
+Estimate the output of the command python3 couponcollector.py 30 will 
+print to the terminal if executed. 
+
+
+36 Answer 
+Estimate the output of the command python couponcollector.py 30 will 
+print to the terminal if executed. 
+30xln(30) = 102 
+
+37 Coupon Collector:  Scientific Context 
+Q.  Given a sequence from nature, does it have same characteristics as a random sequence? 
+A.  No easy answer - many tests have been developed. 
+Coupon collector test.  Compare number of elements that need to be examined before all values are 
+found against the corresponding answer for a random sequence. 
+
+
+Sieve of Eratosthenes 
+
+
+39 Sieve of Eratosthenes 
+Prime.  An integer > 1 whose only positive factors are 1 and itself. 
+Ex.  2, 3, 5, 7, 11, 13, 17, 23, … 
+Prime counting function.  π(N)  =  # primes ≤ N.
+Ex.  π(17)  = 7. 
+Sieve of Eratosthenes. 
+●Maintain an array isPrime[] to record which integers are prime. 
+●Repeat for i=2 to N 
+−if i is not still marked as prime 
+i is is not prime since we previously found a factor 
+−if i is marked as prime 
+i is prime since it has no smaller factors 
+mark all multiples of i to be non-prime 
+
+Prime.  An integer > 1 whose only positive factors are 1 and itself. 
+Ex.  2, 3, 5, 7, 11, 13, 17, 23, … 
+Prime counting function.  π(N)  =  # primes ≤ N.
+Ex.  π(25)  = 9. Sieve of Eratosthenes 
+
+
+Sieve of Eratosthenes 
+Initialization 
+Sieve of Eratosthenes 
+Counting 
+
+Sieve of Eratosthenes 
+
+
+43 Exercise: Sieve of Eratosthenes 
+Compute π(20) 
+
+
+44 Answer 
+π(20) = 8 
+
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+3. Arrays 
+•Basic concepts 
+•Examples of array-processing code 
+•Two-dimensional arrays INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+Multidimensional Arrays 
+
+
+47 Two-Dimensional Arrays 
+Two-dimensional arrays. 
+●Table of data for each experiment and outcome. 
+●Table of grades for each student and assignments. 
+●Table of grayscale values for each pixel in a 2D image. 
+Mathematical abstraction.  Matrix. 
+Python abstraction.  2D array. 
+Reference:  Botstein & Brown 
+group Gene 1 
+Gene n 
+gene 
+expressed gene not 
+expressed 
+
+48 Python Support for 2D Arrays 
+
+
+49 Indexing 2D Arrays 
+Array access.  Use a[i][j]  to access entry in row i and column j. 
+Zero-based indexing.  Row and column indices start at 0.
+M = 10
+N = 3
+a = []
+for i in range (M):
+    row = [0.0]*N
+    a += [row] 
+a = stdarray.create2D (M,N, 0.0)
+
+
+50 Setting 2D Array Values at Compile Time 
+ p = [[  .92, .02, .02, .02, .02 ],
+     [  .02, .02, .32, .32, .32 ],
+     [  .02, .02, .02, .92, .02 ],
+     [  .92, .02, .02, .02, .02 ],
+     [  .47, .02, .47, .02, .02 ]] 
+
+
+51 Ragged 2D Arrays 
+
+
+Application of arrays: vector and matrix calculations 
+52Mathematical abstraction: matrix 
+Python implementation: 2D array 
+Vector addition 
+c = stdarray.create1D(N,0.0) 
+for i in range(N): 
+   c[i] = a[i] + b[i] Matrix addition 
+c = stdarray.create2D(N,N,0.0) 
+for i in range(N): 
+   for j in range(N): 
+      c[i][j] = a[i][j] + b[i][j] 
+.70 .20 .10 
+.30 .60 .10 
+.50 .10 .40 .80 .30 .50 
+.10 .40 .10 
+.10 .30 .40 1.5 .50 .60 
+.40 1.0 .20 
+.60 .40 .80 + =.30 .60 .10 + =.50 .10 .40 .80 .70 .50 Mathematical abstraction: vector 
+Python implementation: 1D array 
+a b ca b c
+
+53 Matrix Multiplication 
+Matrix multiplication.  Given two N-by-N matrices a and b, define c
+to be the N-by-N matrix where c[i][j]  is the dot product of 
+the ith row of a[][]  and the jth column of b[][] . 
+c = stdarray.create2D (N,N,0.0)
+for i in range (0,N):
+    for j in range (0,N):
+        for k in range (0,N):
+            c[i][j] += a[i][k] * b[k][j]all values initialized to 
+0.0
+dot product of row i of a[][]  
+and column j of b[][] 
+
+
+54 Exercise: Matrix Multiplication 
+Compute the following matrix products ?
+
+
+55 Answer 
+Compute the following matrix products ? (NOT COMMUTATIVE )
+
+
+56 Exercise: Scalar multiplications 
+Q.  How many scalar multiplications multiply two N-by-N matrices? 
+A.  NB.  N2C.  N3D.  N4
+c = stdarray.create2D (N,N,0.0)
+for i in range (0,N):
+    for j in range (0,N):
+        for k in range (0,N):
+            c[i][j] += a[i][k] * b[k][j]
+
+57 Answer 
+Q.  How many scalar multiplications multiply two N-by-N matrices? 
+A.  NB.  N2C.  N3D.  N4
+c = stdarray.create2D (N,N,0.0)
+for i in range (0,N):
+    for j in range (0,N):
+        for k in range (0,N):
+            c[i][j] += a[i][k] * b[k][j]
+
+58 Averages 
+
+59 Vector-matrix products 
+
+
+Self-Avoiding Walk 
+
+
+Self-Avoiding Walk 
+Model. 
+●N-by-N lattice. 
+●Start in the middle. 
+●Randomly move to a neighboring intersection, 
+avoiding all previous intersections. 
+●Two possible outcomes:  dead end  and escape .
+Applications.  Polymers, statistical mechanics, etc. 
+Q.  What fraction of time will you escape in an 5-by-5 lattice? 
+Q.  In an N-by-N lattice? 
+61 
+
+
+Exercise: Skeleton 
+62 Skeleton.  Before writing any code, write comments to describe what you want your program to do. 
+
+
+Answer 
+63 Skeleton.  Before writing any code, write comments to describe what you want 
+your program to do. 
+// imports 
+def main (): 
+      // Read in lattice size N as command-line argument. 
+      // Read in number of trials T as command-line argument. 
+      // Repeat T times: 
+         // Initialize (x, y) to center of N-by-N grid.   
+         // Repeat as long as (x, y) stays inside N-by-N grid: 
+              // Check for dead end and update count. 
+              // Mark (x, y) as visited. 
+              // Take a random step, updating (x, y). 
+         // Print fraction of dead ends. 
+if __name__ == "__main__"  : main ()how to
+implement? 
+
+
+Self-Avoiding Walk:  Implementation 
+64
+import random 
+import sys 
+import stdarray 
+import stdio 
+import stdrandom 
+def main(): 
+    N      = int(sys.argv[1]) 
+    trials = int(sys.argv[2]) 
+    deadEnds = 0     
+    for t in range(trials): 
+        a = stdarray.create2D(N,N,False) 
+        x = N//2 
+        y = N//2 
+        while (x > 0) and (x < N-1) and (y > 0) and (y < N-1): 
+            # Check for dead end and make random move. 
+            a[x][y] = True 
+            if (a[x-1][y] and a[x+1][y] and a[x][y-1] and a[x][y+1]): 
+                deadEnds += 1 
+                break 
+            r = stdrandom.uniformInt(1,5) 
+            if   (r == 1) and (not a[x+1][y]): x += 1 
+            elif (r == 2) and (not a[x-1][y]): x -= 1 
+            elif (r == 3) and (not a[x][y+1]): y += 1 
+            elif (r == 4) and (not a[x][y-1]): y -= 1 
+    stdio.writeln(str(100*deadEnds//trials) + '% dead ends') 
+if __name__ == '__main__': main() only take step if 
+site is unoccupied 
+
+Visualization of Self-Avoiding Walks 
+65 % python selfavoid.py 10 100000 
+5% dead ends 
+% python selfavoid.py 20 100000 
+32% dead ends 
+% python selfavoid.py 30 100000 
+58% dead ends 
+…
+% python selfavoid.py 100 100000 
+99% dead ends 
+
+
+66 Summary 
+Arrays. 
+●Organized way to store huge quantities of data. 
+●Almost as easy to use as primitive types. 
+●Can directly access an element given its index. 
+Ahead.  Reading in large quantities of data from a file into an array. 
+http://imgs.xkcd.com/comics/donald_knuth.png 

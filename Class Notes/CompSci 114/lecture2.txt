@@ -1,0 +1,1188 @@
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+https://intr o cs. cs.princeton. edu/python 
+Slides ported to Python by James Pope 
+Last updated on 2023/10/20 08:40 
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+https://intr o cs. cs.princeton. edu/python 
+2. Conditionals & Loops 
+Slides ported to Python by James Pope 
+Last updated on 2023/10/20 08:40 1.3 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+2. Conditionals & Loops 
+•Conditionals: the if statement 
+•Loops: the while  statement 
+•An alternative: the for loop 
+•Do-While loop 
+•Nesting 
+•Debugging INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+Context: basic building blocks for programming 
+3any program you might want to write 
+object
+s
+functions and 
+modules 
+graphics, sound, and image 
+I/O 
+array
+s
+conditionals and 
+loops 
+Math text 
+I/O 
+assignment 
+statements primitive data 
+types 
+Previous lecture: 
+equivalent to a calculator 
+This lecture: 
+to infinity and beyond! conditionals and loops 
+
+
+4Conditionals and Loops 
+Control flow 
+•The sequence of statements that are actually executed in a program. 
+•Conditionals and loops  enable us to choreograph control flow. 
+statement 1 
+straight-line control flow statement 2 
+statement 3 
+statement 4    boolean 1 control flow with conditionals and a loop 
+[this lecture] 
+   boolean 2 
+statement 3 statement 2 statement 3 
+false true
+false 
+true
+control flow with conditionals and loops 
+
+Conditionals 
+
+
+6The if statement 
+The if statement.   A common branching structure. 
+•Evaluate a boolean  expression. 
+•If True, execute a statement. 
+•The else  option : If False , execute a different statement. 
+if (boolean expression ):
+   statement T 
+else: 
+   statement F 
+can be any sequence 
+of statements 
+statement T true false boolean expression 
+statement F 
+
+
+7 Template 
+
+
+8 If Statement Example 
+
+
+9 CASE 1: Ascending Order 
+python3 order.py 8 9 
+8 > 9 is false 
+
+10 CASE 2: Descending Order 
+python3 order.py 7 5 
+7 > 5 is true
+
+11 If Statement Examples 
+
+
+12Example of if statement use: simulate a coin flip 
+import stdrandom 
+def main(): 
+    if stdrandom.uniform() < 0.5: 
+        stdio.writeln('Heads') 
+    else: 
+        stdio.writeln('Tails') 
+if __name__ == '__main__': main() 
+% python flip.py 
+Heads 
+% python flip.py 
+Heads 
+% python flip.py 
+Tails 
+% python flip.py 
+Heads 
+flip.py Take different action depending on value of variable.  
+
+
+1
+3Example of if statement use 
+def main(): 
+    a = int(sys.argv[1]) 
+    b = int(sys.argv[2]) 
+    if (b < a): 
+        t = a 
+        a = b 
+        b = t 
+    stdio.writeln(a) 
+    stdio.writeln(b) Q. What does this program do? 
+% python TwoSort.py 1234 99 
+99 
+1234 
+% python TwoSort.py 99 1234 
+99 
+1234 
+A. Reads two integers from the command line, then prints them out in numerical order. : 
+2-sort 
+alternatives for if and else 
+can be a sequence  of 
+statements TwoSort.py 
+
+14 Exercise: If Example 
+What does the following program print to the terminal? 
+
+
+15 Answer 
+X = 5 
+Y = 7 
+(3*5)<(2*7) => false 
+Y = 7*7+10 = 59 
+X = 5 – 59 = -54 
+-54 59 
+What does the following program print to the terminal? 
+
+16 Exercise: If Example 2 
+What does the following program print to the terminal? 
+
+
+17 Answer 
+X = 4 
+Y = 7 
+(3*4)<(2*7) => true 
+X = 4*4 + 3*7 = 37 
+Y = 37*37+7 = 1376 
+37 1376 
+What does the following program print to the terminal? 
+
+Example of if statement use: error checks 
+18
+import stdio 
+def main(): 
+    a = int(sys.argv[1]) 
+    b = int(sys.argv[2]) 
+    summ = a + b 
+    prod = a * b 
+    stdio.writeln(str(a) + ' + ' + str(b) + ' = ' + str(summ) ) 
+    stdio.writeln(str(a) + ' * ' + str(b) + ' = ' + str(prod) ) 
+    if (b == 0): stdio.writeln('Division by zero'); 
+    else:        stdio.writeln(str(a) + ' / ' + str(b) + ' = ' + str(a / b) ) 
+    if (b == 0): stdio.writeln("Division by zero"); 
+    else:        stdio.writeln(str(a) + ' % ' + str(b) + ' = ' + str(a % b) ) 
+if __name__ == '__main__': main() % python intops.py 5 2 
+5 + 2 = 7 
+5 * 2 = 10 
+5 / 2 = 2 
+5 % 2 = 1 
+% python IntOps.py 5 0 
+5 + 0 = 5 
+5 * 0 = 0 
+Division by zero 
+Division by zero 
+Good programming practice.  Use conditionals to check for and avoid  runtime errors. 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+2. Conditionals & Loops 
+•Conditionals: the if statement 
+•Loops: the while  statement 
+•An alternative: the for loop 
+•Do-While loop 
+•Nesting 
+•Debugging INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+20 The while Loop 
+
+
+21The while loop 
+The while loop.  Execute certain statements repeatedly until certain conditions are met. 
+•Evaluate a boolean  expression. 
+•If true , execute a sequence of statements. 
+•Repeat. 
+while  (boolean expression ):
+   statement 1 
+   statement 2 
+loop continuation condition 
+loop body 
+statement 1 true
+false boolean expression statement 2 
+
+
+
+
+
+24 Exercise: While Example 
+What does the following program print to the terminal? 
+
+
+25 Answer 
+X = 4, Y = 3 
+************ 
+ Y = 3+4-1 = 6 
+ X = 3 
+************ 
+X = 3, Y = 6 
+************ 
+ Y = 6+3-1 = 8 
+ X = 2 
+************ 
+X  = 2, Y = 8 
+************ 
+ Y = 8+2–1 = 9 
+ X = 1 
+************ 
+ X = 1, Y = 9 
+************ 
+  Y = 9+1–1 = 9 
+  X = 0 
+************ What does the following program print to the terminal? 
+0 9
+
+Example of while loop use: print powers of two 
+Ex.  Print powers of 2 that are ≤ 2N. 
+●Increment i from 0 to N. 
+●Double v each time. 
+26i v i <= n 
+0 1 true 
+1 2 true 
+2 4 true 
+3 8 true 
+4 16 true 
+5 32 true 
+6 64 true 
+7 128 false 
+% python PowersOfTwo.py 6 
+1
+2
+4
+8
+16 
+32 
+64 
+def main():     
+   n = int(sys.argv[1]) 
+   i = 0 
+   v = 1 
+   while (i <= n): 
+      stdio.writeln(v) 
+      i = i + 1 
+      v = 2 * v 
+
+Pop quiz on while loops 
+Q. Anything wrong with the following code? 
+27
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    i = 0 
+    v = 1 
+    while (i <= n): 
+        stdio.writeln(v) 
+    i = i + 1 
+    v = 2 * v 
+    
+if __name__ == '__main__': main() 
+
+Pop quiz on while  loops 
+Q. Anything wrong with the following code? 
+28
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    i = 0 
+    v = 1 
+    while (i <= n): 
+        stdio.writeln(v) 
+    .... i = i + 1 
+    .... v = 2 * v 
+    
+if __name__ == '__main__': main() Q. What does it do without the increment? 
+A. Goes into an infinite loop .
+A. Yes! Needs proper indentation. 
+% python pqwhile.py 6 
+1
+1
+1
+1
+1
+... 
+
+
+Another While Loop 
+v=1
+v=2*v 
+v<=n//2? 
+
+30 Exercise: While Example 2 
+What does the following program print to the terminal? 
+
+
+31 Answer 
+X = 0, Y = 9 
+************ 
+ Y = 9+0-1 = 8 
+ X = -1 
+************ 
+X = -1, Y = 8 
+************ 
+ Y = 8-1-1 = 6 
+ X = -2 
+************ 
+X  = -2, Y = 6 
+************ 
+ Y = 6-2–1 = 3 
+ X = -3 
+************ 
+ What does the following program print to the terminal? 
+-3 3
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+2. Conditionals & Loops 
+•Conditionals: the if statement 
+•Loops: the while  statement 
+•An alternative: the for loop 
+•Do-While loop 
+•Nesting 
+•Debugging INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+33 The For Loop 
+Copyright 2004, FoxTrot by Bill Amend 
+www.ucomics.com/foxtrot/2003/10/03 
+
+34The for loop 
+The for loop.  An alternative repetition structure. 
+•Execute an initialization statement .
+•Evaluate a boolean  expression .
+•If true, execute a sequence of statements ,
+•then execute an increment statement. 
+•Repeat. 
+for <variable> in range (<start>,<stop> ):
+<statement> 
+<statement> loop continuation condition 
+body 
+statement 1 true
+false boolean expression statement 2 init
+increment 
+
+35 Anatomy of a For Loop 
+Q.  What does it print? 
+A.  0 1
+1 2
+2 4
+3 8
+...
+compund assignment idiom 
+power *=2 => power = power *2 
+
+36 For Loops:  Subdivisions of a Ruler 
+Create subdivisions of a ruler to 1/ N inches. 
+•Initialize ruler  to one space. 
+•For each value i from 1 to N:
+sandwich i between two copies of ruler .
+import stdio 
+def main(): 
+    N = int(sys.argv[1]) 
+    ruler = ' '; 
+    for i in range(1, N+1): 
+        ruler = ruler + str(i) + ruler  
+    stdio.writeln(ruler) 
+if __name__ == '__main__': main() 
+% DO NOT RUN 
+% python Ruler.py 100 
+(will never finish) 
+python Ruler.py 4 
+1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 
+1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 
+i ruler 
+1 " 1 " 
+2 " 1 2 1 " 
+3 " 1 2 1 3 1 2 1 " 
+4 " 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 " 
+End-of-loop trace 
+Note: Small program can produce huge amount of output. 
+
+37 Loop Examples 
+
+
+38 Exercise: for loop 
+Use a for loop to compute 1 + 3 + 5+ … + N. Assume N is odd and has already been defined. 
+
+
+Pop quiz on for loops 
+Q. What does the following program print? 
+39
+def main(): 
+    f = 0 
+    g = 1 
+    for i in range(0, 11): 
+        stdio.writeln(f) 
+        f = f + g 
+        g = f - g 
+
+Pop quiz on for loops 
+Q. What does the following program print? 
+40
+def main(): 
+    f = 0 
+    g = 1 
+    for i in range(0, 11): 
+        stdio.writeln(f) 
+        f = f + g 
+        g = f - g A. i f g
+0 0 1
+1 1 0
+2 1 1
+3 2 1
+4 3 2
+5 5 3
+6 8 5
+7 13 8
+8 21 13 
+9 34 21 
+10 55 34 Beginning-of-loop trace 
+values printed 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+2. Conditionals & Loops 
+•Conditionals: the if statement 
+•Loops: the while  statement 
+•An alternative:  Do-While loop 
+•Do-While loop 
+•Nesting 
+•Debugging INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+42 Do-While Loop (loop and a half) 
+The do-while  loop.  A less common repetition structure. 
+●Execute sequence of statements. 
+●Check loop-continuation condition. 
+●Repeat. 
+while  (True ):
+   statement 1 
+   Statement 2 
+   if (boolean expression ):
+      break 
+do-while loop syntax statement 2 true
+false boolean expression statement 1 
+
+43 Do-While Loop 
+The do-while  loop.  A less common repetition structure. 
+●Execute sequence of statements. 
+●Check loop-continuation condition. 
+●Repeat. 
+ends loop 
+
+Infinite Loop 
+<ctrl-c> 
+
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+2. Conditionals & Loops 
+•Conditionals: the if statement 
+•Loops: the while  statement 
+•An alternative:  Do-While loop 
+•Do-While loop 
+•Nesting 
+•Debugging INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+46 Nesting 
+
+
+47 Nesting Conditionals and Loops 
+Conditionals  enable you to do one of 2n
+sequences of operations with n lines. 
+More sophisticated programs. 
+●Nest conditionals within conditionals. 
+●Nest loops within loops. 
+●Nest conditionals within loops within loops. if (a0 > 0): stdio.write (str(0))
+if (a1 > 0): stdio.write (str(1))
+if (a2 > 0): stdio.write (str(2))
+if (a3 > 0): stdio.write (str(3))
+if (a4 > 0): stdio.write (str(4))
+if (a5 > 0): stdio.write (str(5))
+if (a6 > 0): stdio.write (str(6))
+if (a7 > 0): stdio.write (str(7))
+if (a8 > 0): stdio.write (str(8))
+if (a9 > 0): stdio.write (str(9))Loops  enable you to do an operation n times 
+using only 2 lines of code. 
+sum = 0.0
+for i in range (1,1025): 
+   sum = sum + 1.0 / i
+210 = 1024 possible results, depending on input computes 1/1 + 1/2  + ... + 1/1024 
+
+
+Nested Loop Statements 
+
+
+Flow Diagram of Divisor Pattern 
+
+
+Trace of DivisorPattern 
+
+
+51 Exercise: Modify DivisorPattern 
+Modify DivisorPattern.py to print the following pattern: 
+              
+  * * * * * * * 
+ * ** ** ** ** * 
+  * *** *** *** 
+ *** **** **** * 
+   ** ***** **** 
+ ***** ****** ** 
+  * *** ******* 
+ * ***** ******* 
+  ** **** ****** 
+ ********* ***** 
+    * ***** **** 
+ *********** *** 
+  **** ****** ** 
+ * * ********* * 
+  * *** ******* not(A or B) = not A and not B 
+TIP::  De Moore’s law 
+
+
+52 Answer 
+Modify DivisorPattern.py to print the following pattern: 
+              
+  * * * * * * * 
+ * ** ** ** ** * 
+  * *** *** *** 
+ *** **** **** * 
+   ** ***** **** 
+ ***** ****** ** 
+  * *** ******* 
+ * ***** ******* 
+  ** **** ****** 
+ ********* ***** 
+    * ***** **** 
+ *********** *** 
+  **** ****** ** 
+ * * ********* * 
+  * *** ******* 
+if (i%j==0) or (j%i==0) if (i%j != 0) and (j%i != 0) not(A or B) = not A and not B 
+TIP::  De Morgan’s law 
+
+53 Nested If Statements 
+Ex.  Pay a certain tax rate depending on income level. 
+rate = 0.0 
+if   ( income  <  47450 ): rate = 0.22 
+elif  (income  < 114650 ): rate = 0.25 
+elif  (income  < 174700 ): rate = 0.28 
+elif  (income  < 311950 ): rate = 0.33 
+else:                      rate = 0.35 
+graduated income tax calculation 0  -  47,450 22%Income Rate 
+47,450 – 114,650 25%
+114,650 – 174,700 28%
+174,700 – 311,950 33%
+311,950 - 35%5 mutually exclusive 
+alternatives 
+else if 
+
+54 Nested If Statement Challenge 
+Q.  What's wrong with the following for income tax calculation? 
+rate  = 0.35 
+if (income  <  47450 ): rate = 0.22 
+if (income  < 114650 ): rate = 0.25 
+if (income  < 174700 ): rate = 0.28 
+if (income  < 311950 ): rate = 0.33 
+wrong  graduated income tax calculation 0  -  47,450 22%Income Rate 
+47,450 – 114,650 25%
+114,650 – 174,700 28%
+174,700 – 311,950 33%
+311,950 - 35%
+
+55Nesting conditionals and loops 
+Nesting 
+•Any “statement” within a conditional or loop may itself 
+be a conditional or a loop statement. 
+•Enables complex control flows. 
+•Adds to challenge of debugging. 
+if-else  statement 
+within a while  loop 
+within a for loop 
+Gambler's ruin simulation for t in range(0,trials):  
+   cash = stake 
+   while (cash > 0 and cash < goal): 
+      if (stdrandom.uniform() < 0.5): 
+         cash += 1 
+      else: 
+         cash -= 1 
+   if (cash == goal): wins += 1 Example: 
+
+56 Math Applications 
+
+
+Harmonic Numbers 
+
+
+58 Exercise: Harmonic 
+What does the following command, python3 Harmonic.py 3, print to the terminal when executed? 
+
+
+59 Answer 
+What does the following command, python Harmonic.py 3, print to the terminal when executed? 
+1.833333333333 
+
+60 Square root method explained. 
+●Goal: find root of any function f(x). 
+●Start with estimate t0.
+●Draw line tangent to curve at x= ti.
+●Set ti+1 to be x-coordinate where the line intersects the x-axis. 
+●Repeat until desired precision. 
+Newton-Raphson Method 
+f(x) = x2 - c to compute 
+√c
+Technical conditions.  f(x) is smooth; t0 is good estimate. 
+
+Math 
+Computing 
+Constant 
+Tangent Line 
+Substitution f(x) = x2 - c to compute 
+√c
+
+62 While Loops:  Square Root 
+Goal.  Implement math.sqrt() .
+Newton-Raphson method to compute the square root of c: 
+●Initialize t0 = c.
+●Repeat up to desired precision: 
+set ti+1 to be the average of ti and c / ti.
+ 
+computing the square root of 
+2
+Copyright 2004, Sidney Harris 
+www.sciencecartoonsplus.com % python3 sqrt.py 2.0 
+1.414213562373095 
+15 decimal digits of 
+accuracy in  5 
+iterations 
+
+
+While Loops:  Square Root 
+
+
+While Loops:  Square Root 
+
+
+65 Exercise: Even While Loop 
+●Write a while loop that prints out all the even numbers between 1 and N. 
+●Assume N has already been defined. Include N in your calculation. 
+
+
+66 Answer 
+Write a while loop that prints out all the even numbers between 1 and N. 
+Assume N has already been defined. Include N in your calculation. 
+i = 1 
+while (i<=N): 
+if (i%2 == 0): 
+   stdio.write(str(i)+” “) 
+   i += 1; 
+stdio.writeln() 
+
+Refactoring 
+
+
+
+
+69 Exercise: Convert To Binary 
+Convert 21 to its binary representation. 
+
+
+70 Answer 
+Convert 21 to its binary representation: 
+10101 
+
+71 Monte Carlo Simulation 
+
+
+72Gambler's ruin problem 
+A gambler starts with $ stake  and places $1 fair bets. 
+•Outcome 1 (loss): Gambler goes broke with $0. 
+•Outcome 2 (win): Gambler reaches $ goal.
+One approach:  Monte Carlo simulation. 
+•Use a simulated coin flip .
+•Repeat and compute statistics. Q. What are the chances of winning? 
+Q. How many bets until win or loss? 
+
+
+73 Preamble 
+Take different action depending on value of variable.  
+
+
+74 Gambler's Ruin 
+
+
+75 Digression:  Simulation and Analysis 
+Fact. Probability of winning = stake ÷ goal. 
+Fact. Expected number of bets = stake × desired gain. 
+Ex.  20% chance of turning  $500 into $2500, 
+but expect to make one million $1 bets. 
+Remark.  Both facts can be proved mathematically; for more complex scenarios, computer 
+simulation is often the best (only) plan of attack. % python3 gambler.py 5 25 1000 
+191 wins of 1000 
+% python3 gambler.py 5 25 1000 
+203 wins of 1000 
+% python3 gambler.py 500 2500 1000 
+197 wins of 1000 stake goal T
+after a substantial wait…. 
+500/2500 = 20% 
+500 * (2500 - 500) = 1 million 
+
+76 Exercise: Gambler 
+Estimate the output of the following command, python Gambler.py 400 1600 1000, if it is 
+executed. 
+
+
+77 Answer 
+Estimate the output the following command, python Gambler 400 1600 1000, 
+will print to the terminal if it is executed. 
+(400/1600) x 1000 = 250 
+
+78 Exercise: EvenStripes 
+Modify DivisorPattern.py so that it produces the following pattern: 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+
+
+79 Answer 
+Modify DivisorPattern.py so that it produces the following pattern: 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+if (i%j==0) or (j%i==0) if (j%2) 
+
+80 Control Flow Summary 
+Control flow. 
+●Sequence of statements that are actually executed in a program. 
+●Conditionals and loops:  enable us to choreograph the control flow. 
+straight-line 
+programs all statements are 
+executed in the order given 
+conditionals certain statements are 
+executed depending on the 
+values of certain variables if
+elif 
+loops certain statements are 
+executed repeatedly until 
+certain conditions are met 
+while 
+for
+Control Flow Description Examples 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+2. Conditionals & Loops 
+•Conditionals: the if statement 
+•Loops: the while  statement 
+•An alternative: the for loop 
+•Nesting 
+•Debugging INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+Debugging 
+is 99% of program development in any programming language, even for experts. 
+82Impossible ideal:  "Please compile, execute, and debug my program." 
+Bottom line:  Programming is primarily a process of finding and fixing mistakes. “ As soon as we started programming, we found out to our surprise that it wasn't as easy to get 
+  programs right as we had thought.  I can remember the exact instant when I realized that a large 
+ part of my life from then on was going to be spent in finding mistakes in my own programs. ” 
+You will make many mistakes as you 
+write programs.  It's normal. 
+Bug: A mistake in a program. 
+Why is this impossible? Stay tuned. EDIT 
+COMPILE RUN Debugging: The process of eliminating bugs. 
+
+
+Debugging 
+is challenging because conditionals and loops dramatically increase  the number of possible outcomes. 
+83Most programs contain numerous conditionals and loops, with nesting. program structure no loops n conditionals 1 loop 
+number of possible execution 
+sequences 1 2n
+ no limit 
+Good news.  Conditionals and loops provide structure that helps us understand our programs. 
+“ The quality of programmers is a decreasing 
+function of the number of goto statements in the 
+programs they produce. ” 
+− Edsgar Dijkstra 
+Old and low-level languages have a goto 
+statement that provides arbitrary structure. 
+Eliminating gotos was controversial until 
+Edsgar Dijkstra published the famous note 
+"Goto considered harmful" in 1968. 
+
+Debugging a program: a running example 
+Problem:  Factor a large integer n.
+Application:  Cryptography. 
+84
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    
+    i = 0 
+    while i <= n: 
+        while n % i == 0 
+            # Cast out and write factor. 
+            n //= i 
+            stdio.write(str(i) + ' ') 
+        i += 1 
+if __name__ == '__main__': main() Method 
+•Consider each integer i less than n
+•While i divides n evenly 
+     Print i  (it is a factor of n).
+     Replace n with n/i .
+Rationale: 
+  1. Any factor of n/i is a factor of n.
+  2. i may be a factor of n/i.Surprising fact: Security of internet commerce 
+depends on difficulty of factoring large integers .3,757,208 = 2 × 2 × 2 × 7 × 13 × 13 × 397 
+98 = 2 × 7 × 7
+17 = 17 
+11,111,111,111,111,111 = 2,071,723 × 5,363,222,357 
+This program has bugs! 
+
+
+Debugging a program: syntax errors 
+Is your program a legal Python program? 
+•Python compiler can help you find out. 
+•Find the first compiler error (if any). 
+•Repeat. 
+•Result: An executable file 
+85
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    
+    i = 0 
+    while i <= n: 
+        while n % i == 0: 
+            # Cast out and write factor. 
+            n //= i 
+            stdio.write(str(i) + ' ') 
+        i += 1 
+    
+if __name__ == '__main__': main() 
+% python factors.py 5 
+File "factors.py", line 13 
+    while n % i == 0 
+                        ^ 
+SyntaxError: invalid syntax need : 
+Trying to tell a computer what to do 
+This legal program still has bugs! 
+EDIT 
+COMPILE 
+
+Debugging a program: runtime and semantic errors 
+Does your legal Python program do what you want it to do? 
+•You need to run it to find out. 
+•Find the first runtime error (if any). 
+•Fix and repeat. 
+86
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    
+    i = 2
+    while i <= n: 
+        while n % i == 0: 
+            # Cast out and write factor. 
+            n //= i 
+            stdio.write(str(i) + ' ') 
+        i += 1 
+if __name__ == '__main__': main() 
+% python3 factors.py 
+Traceback (most recent call last): 
+  File "factors.py", line 25, in <module> 
+    if __name__ == '__main__': main() 
+  File "factors.py", line 9, in main 
+    n = int(sys.argv[1]) 
+IndexError: list index out of range need to start at 2 
+since 0 and 1 
+are not factors 
+% python factors.py 98 
+2 7 7% 98 = 2 × 7× 7 ✓ oops, need argument 
+you will see this message! 
+This working program still has bugs! 
+EDIT 
+COMPILE RUN 
+
+Debugging a program: testing 
+Does your legal Python program always  do what you want it to do? 
+•You need to test on many types of inputs it to find out. 
+•Add trace code to find the first error. 
+•Fix the error. 
+•Repeat. 
+87
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    
+    i = 2
+    while i <= n: 
+        stdio.writeln('TRACE '+str(i)+' '+str(n)) 
+        while n % i == 0: 
+            # Cast out and write factor. 
+            n //= i 
+            stdio.write(str(i) + ' ') 
+        i += 1 
+    stdio.writeln() 
+if __name__ == '__main__': main() 
+% python factors.py 98 
+2 7 7% 
+ % python factors.py 5 
+TRACE 2 5 
+TRACE 3 5 
+TRACE 4 5 
+TRACE 5 5 
+5need newline 
+
+
+Debugging a program: testing 
+Does your legal Python program always  do what you want it to do? 
+•You need to test on many types of inputs it to find out. 
+•Add trace code to find the first error. 
+•Fix the error. 
+•Repeat. 
+88
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    
+    i = 2
+    while i <= n: 
+        #stdio.writeln('TRACE '+i+' '+factor) 
+        while n % i == 0: 
+            # Cast out and write factor. 
+            n //= i 
+            stdio.write(str(i) + ' ') 
+        i += 1 
+    stdio.writeln() 
+if __name__ == '__main__': main() 
+% python factors.py 5 
+TRACE 2 5 
+TRACE 3 5 
+TRACE 4 5 
+TRACE 5 5 
+% python factors.py 5 
+5
+% python factors.py 6 
+2 3 
+% python factors.py 98 
+2 7 7 
+% python factors.py 3757208 
+2 2 2 7 13 13 397 ???
+%$%@$#!! 
+forgot to save 
+Note:  This working program still has a bug (stay tuned). 
+
+
+Program development in Python 
+is a three-step process, with feedback 
+1. EDIT your program 
+•Create it by typing on your computer's keyboard. 
+•Result: a text file such as factors.py .
+2. COMPILE it to create an executable file 
+•Use the Python compiler 
+•Result: Python bytecode file 
+•Mistake? Go back to 1. to fix and recompile. 
+3. RUN your program 
+•Use the Python interpreter. 
+•Result: your program’s output. 
+•Mistake? Go back to 1. to fix, recompile, and execute 
+8
+9EDIT 
+COMPILE RUN 
+
+
+Debugging a program: where we left off 
+9
+0
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    
+    i = 2 
+    while i <= n: 
+        while n % i == 0: 
+            # Cast out and write factor. 
+            n //= i 
+            stdio.write(str(i) + ' ') 
+        i += 1 
+    stdio.writeln() 
+if __name__ == '__main__': main() 
+% python factors.py 98 
+2 7 7 
+% python factors.py 3757208 
+2 2 2 7 13 13 397 
+Problem:  Factor a large integer N.
+Application:  Cryptography. 
+✓ Method 
+•Consider each integer i less equal than N
+•While i divides N evenly 
+     print i  (it is a factor of N)
+     replace N with N/i .
+
+Debugging a program: performance 
+91
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    
+    i = 2 
+    while i*i <= n: 
+        while n % i == 0: 
+            # Cast out and write factor. 
+            n //= i 
+            stdio.write(str(i) + ' ') 
+        i += 1 
+    stdio.writeln() 
+if __name__ == '__main__': main() 
+Method 
+•Consider each integer i*i less than N
+•While i divides n evenly 
+     print i  (it is a factor of n)
+     replace n with n/i .Is your working Python program fast enough to solve your problem? 
+•You need to test it on increasing problem sizes to find out. 
+•May need to change the algorithm to fix it. 
+•Repeat. 
+% python factors.py 11111111 
+11 73 101 137 
+% python factors.py 11111111111 
+21649 513239 
+% python factors.py 11111111111111 
+11 239 4649 909091 
+% python factors.py 11111111111111111 
+2071723 immediate 5363222357 change the algorithm: no need to check when i*i>n since all smaller 
+factors already checked 
+No need to check 
+all i < n 
+
+Debugging a program: performance analysis 
+92
+import stdio 
+import sys 
+def main(): 
+    n = int(sys.argv[1]) 
+    
+    i = 2 
+    while i*i <= n: 
+        while n % i == 0: 
+            # Cast out and write factor. 
+            n //= i 
+            stdio.write(str(i) + ' ') 
+        i += 1 
+    stdio.writeln() 
+if __name__ == '__main__': main() Q. How large an integer can I factor? 
+% python factors.py 9201111169755555703 
+9201111169755555703 
+digits in largest 
+factor i <= N i*i <= N 
+3 instant instant 
+6 instant instant 
+9 77 seconds instant 
+12 21 hours†
+ instant 
+15 2.4 years†
+ 2.7 seconds 
+18 2.4 millenia†
+ 92 seconds 
+Lesson. Performance matters! 
+Note. Internet commerce is still secure: it depends on the difficulty of factoring 200-digit integers. experts are still trying to develop better 
+algorithms for this problem † estimated, using analytic number theory 
+
+
+93Debugging your program: summary 
+Program development is a four-step process, with feedback. 
+EDIT  your program. 
+COMPILE  your program to create an executable file. syntax error 
+TEST  your program on realistic and real input data. 
+SUBMIT  your program for independent testing and approval. 
+Telling a computer what to do when 
+you know what you're doing 
+RUN  your program to test that it works as you imagined. 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+Image sources 
+  http://playatlantic.com/sites/default/files/good%20looking%20girl%20on%20laptop_0.jpg 
+  http://en.wikipedia.org/wiki/Edsger_W._Dijkstra#mediaviewer/File:Edsger_Wybe_Dijkstra.jpg 
+  http://pixabay.com/en/hourglass-clock-timer-sand-time-152090/ 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+https://intr o cs. cs.princeton. edu/python 
+Slides ported to Python by James Pope 
+Last updated on 2023/10/20 08:40 
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+https://intr o cs. cs.princeton. edu/python 
+Title Text 
+Slides ported to Python by James Pope 
+Last updated on 2023/10/20 08:40 1.3 

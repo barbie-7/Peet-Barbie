@@ -1,0 +1,721 @@
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+https://intr o cs. cs.princeton. edu/python 
+Slides ported to Python by James Pope 
+Last updated on 2023/10/20 08:35 Attendance Register 
+1.1–1.2 
+https://forms.gle/f1UuDkXzQyq47Xvs8   
+
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+https://intr o cs. cs.princeton. edu/python 
+Slides ported to Python by James Pope 
+Last updated on 2023/10/20 08:35 
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+https://intr o cs. cs.princeton. edu/python 
+1. Basic Programming 
+Concepts 
+1.1–1.2 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+1. Basic Programming 
+Concepts 
+•Why programming? 
+•Built-in data types 
+•Type conversion INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+Why Programming ? 
+Why programming?  Need to tell the computer what to do. 
+                                 Naive ideal:   Natural language instructions. 
+           Prepackaged solutions (apps)  are great when what they do is what you want. 
+Programming enables you to make a computer do anything  you want. 
+4
+“Please simulate the motion of N heavenly bodies, 
+subject to Newton’s laws of motion and gravity.” 
+Ada Lovelace 
+ Analytical Engine 
+Ada Lovelace Analytic Engine 
+
+Programming: telling a computer what to do 
+Why program ? 
+•Is a natural, satisfying and creative experience. 
+•Enables accomplishments not otherwise possible. 
+•The path to a new world of intellectual endeavor. 
+5“ Instead of imagining that our main task is to instruct a 
+  computer  what to do, let us concentrate rather on explaining 
+  to human  beings what we want a computer to do. ” 
+− Donald Knuth 
+Challenges 
+•Need to learn what computers can do. 
+•Need to learn a programming language .
+Telling a computer what to do 
+
+Languages 
+6
+Kids Make Nutritious Snacks. 
+Red Tape Holds Up New Bridge. 
+Police Squad Helps Dog Bite Victim. 
+Actual newspaper headlines 
+—Rich Pattis 
+Natural language 
+•Easy for human. 
+•Ambiguous and hard for computer 
+to parse Machine language 
+•Easy for computer. 
+•Error-prone for human. High-level language 
+•Some difficulty for both. 
+•An acceptable tradeoff. 
+But which  high-level language? 
+Naive ideal:  A single programming language for all purposes. 
+for (int t = 0; t < 2000; t++) 
+{
+   a[0] = a[11] ^ a[9]; 
+   System.out.print(a[0]); 
+   for (int i = 11; i > 0; i--) 
+       a[i] = a[i-1]; 
+}
+Simulating an LFSR 
+10: 8A00    RA ← mem[00] 
+11: 8B01    RB ← mem[01] 
+12: 1CAB   RC ← RA + RB 
+13: 9C02    mem[02] ← RC 
+14: 0000    halt 
+Adding two numbers 
+
+7Our Choice: Python 
+Python features 
+•Widely used/available. 
+•Under development since early/mid 1990s. 
+•Embraces modern abstractions. 
+•Several widely used libraries (e.g. pandas/scikit-learn) 
+Facts of life 
+•No language is perfect. 
+•You need to start with some  language. 
+Our approach 
+•Use a minimal subset of Python. 
+•Develop general programming skills that are applicable to many languages. 
+It’s not about the language! “ There are only two kinds of 
+programming languages: those 
+people always [gripe] about and 
+those nobody uses. ” 
+− Bjarne Stroustrup 
+Guido van Rossum 
+
+A rich subset of the Python language vocabulary 
+8built-in types 
+int 
+float 
+str 
+bool flow control 
+if 
+else 
+elif 
+for 
+while 
+boolean 
+operations 
+True 
+False 
+not 
+and 
+or String 
+operations 
++
+"" 
+'
+len(str) 
+str[i] operations on 
+numeric types 
++
+-
+*
+/
+// 
++= 
+-= 
+punctuation 
+spaces 
+(
+)
+,
+:assignment 
+=
+arrays 
+a[] 
+len(a) functions / 
+objects 
+class 
+def 
+global 
+import 
+from 
+def main() Math 
+methods 
+math.sin() 
+math.cos() 
+math.log() 
+math.exp() 
+math.sqrt() 
+math.pi System 
+methods 
+print() 
+raw_input() 
+type conversion methods 
+int() 
+float() 
+str() 
+bool() 
+Your programs will primarily consist of these plus identifiers (names) that you make up. comparisons 
+<
+<= 
+>
+>= 
+== 
+!= our s td methods 
+stdio.read*() 
+stdio.write*() 
+stdarray.*() 
+stdrandom.*() 
+stddraw.*() 
+
+
+Hello, World 
+Requirements 
+●Python must be installed, VS code and terminal 
+●ASK DEMI FOR ASSISTANCE DURING TUTORIAL 
+●https://introcs.cs.princeton.edu/python/home/ 
+
+
+Programming in Python 
+Programming in Python. 
+●Create the program by typing it into a text editor, and save it as HelloWorld.py .
+
+
+Programming in Python 
+Programming in Python. 
+●Create the program by typing it into a text editor, and save it as HelloWorld.py .
+●Compile  it by typing in the command-line: 
+○python3 -m py_complile helloworld.py. 
+●This creates a Python bytecode file named:  helloworld.pyc. command-line 
+% python3 -m py_complile helloworld.py 
+
+
+Programming in Python 
+Programming in Python. 
+●Create the program by typing it into a text editor, and save it as helloWorld.py .
+●Compile  it by typing in the command-line: 
+○python3 -m py_complile helloworld.py. 
+●Execute  it by typing in the command-line: 
+○python3 helloworld.py. 
+command-line 
+% python3 helloworld.py 
+Hellow, World 
+
+
+Anatomy of your first program 
+131
+2
+3
+4
+5
+6# PA1: James Pope, prints to standard output 
+import stdio 
+def main(): 
+    # Write to standard output. 
+    stdio.writeln('Hello, World') 
+if __name__ == '__main__': main() main()  
+function module name text file named 
+helloworld.py 
+execution starts here 
+(other than imports) comment text file named 
+helloworld.py 
+
+Anatomy of your programs in general 
+1
+4import ... 
+import ... 
+def function1(): 
+    ... 
+def function2(): 
+    ... 
+def main(): 
+    ... 
+if __name__ == '__main__': main() main()  
+method text file ending 
+with '.py' 
+sequence 
+of functions sequence 
+of module 
+imports 
+
+Exercise: programwell.py 
+Write a program that prints the following line to the terminal: I can program well. 
+
+
+Exercise: Answer 
+Write a program that prints the following line to the terminal: I can program well. 
+programwell.py 
+
+Programming in Python: Summary 
+NB – python3/python is used 
+interchangeably in text 
+
+
+Coding, Compiling and Running 
+Code  refers to program text, while coding refers to the act of creating and editing the code. 
+A compiler translates a program from the Python language to a language the computer understands 
+(converts a .py file to a .pyc file). It compiles  the Python program. The python compiler  compiles your 
+program. 
+Executing (or running)  is when you transfer control of your computer from system to your program. The 
+python interpreter  directs your computer to follow your instructions. 
+
+
+Errors 
+Compile-time errors: caught when the the program is compiled, i.e. a syntax error. 
+Run-time errors: logical errors in your program which only show up once you execute it. 
+Errors are also referred to as  bugs .
+
+
+Syntax is important 
+A) small “s” B) Colons are 
+important 
+No semi-colons 
+after statements C) indentation 
+D) underscore A)File "helloworld.py", line 1, in <module> 
+  import Stdio 
+  ModuleNotFoundError: No module named 'Stdio' 
+---
+B)File "helloworld.py", line 3 
+  def main() 
+            ^ 
+  SyntaxError: invalid syntax 
+---
+C)File "helloworld.py", line 4 
+  stdio.writeln("Hello, World!") 
+     ^
+  IndentationError: expected an indented block 
+---
+D)File "helloworld.py", line 6, in <module> 
+  if _name__ == '__main__': main() 
+  NameError: name '_name__' is not defined 
+
+UseArgument 
+sys.argv Store command-line 
+arguments 
+Index arguments 
+
+Exercise: UseArgument 1 
+sys.argv Store command-line 
+arguments 
+What is printed if we modify as follows: 
+stdio.writeln(sys.argv[1]) 
+
+
+Answer 
+% python useargument.py Alice 
+Hi, Alice 
+. How are you? 
+
+Exercise: UseArgument 2 
+sys.argv Store command-line 
+arguments 
+What is printed if we modify as follows: 
+stdio.write(sys.argv[2]) 
+
+
+Answer 
+Hi,Traceback (most recent call last): 
+  File "useargument.py", line 9, in <module> 
+    if __name__ == '__main__': main() 
+  File "useargument.py", line 6, in main 
+    stdio.write(sys.argv[2]) 
+IndexError: list index out of range 
+NB ---> written using a main method 
+
+Pop quiz on running "your first program" 
+Q. Use common sense to cope with the following error messages. 
+26
+% python holamundo.py 
+python: can't open file 'holamundo.py': [Errno 2] No such file or directory 
+% python 
+Python 2.7.10 (default, Oct  6 2017, 22:29:07) 
+[GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)] on darwin 
+Type "help", "copyright", "credits" or "license" for more information. 
+>>> 
+
+Pop quiz on running "your first program" 
+Q. Use common sense to cope with the following error messages. 
+27
+% python holamundo.py 
+python: can't open file 'holamundo.py': [Errno 2] No such file or directory 
+% python 
+Python 2.7.10 (default, Oct  6 2017, 22:29:07) 
+[GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)] on darwin 
+Type "help", "copyright", "credits" or "license" for more information. 
+>>> A. Must have misspelled filename. python helloworld.py 
+A. Oops, forgot to pass python file. python helloworld.py 
+
+Input and Output 
+Command-line argument 
+
+Algorithmic Thinking 
+
+
+Algorithm 
+Algorithm:  a process or set of rules to be followed in calculations or other problem-solving operations, especially by 
+a computer. 
+Example 
+Develop an algorithm to pick the largest number from the following list 
+1, 7, 9, 3, 5, 6 
+1. Choose first number and assign to it the label of 
+current number 
+2. Compare the remaining numbers with the current number in 
+the order given in the list. 
+3. If a larger number is found make it the current number and then continue 
+comparing as before (continue where you are in the list). 
+4. Continue in this way until you have run through all the numbers in the list. 
+5. The number labelled as current number will be the largest number in the list. 
+
+Exercise: Puzzle 
+Develop an algorithm which can be used to complete a jigsaw puzzle. You may assume the puzzle has no 
+missing pieces. You may assume that you can clearly identify the top, left, bottom and right hand side of each 
+piece. 
+
+
+Exercise: Puzzle 
+Develop an algorithm which can be used to complete a jigsaw puzzle. You may assume the puzzle 
+has no missing pieces. You may assume that you can clearly identify the top, left, bottom and right 
+hand side of each piece. 
+1. Put first piece down or choose a random piece which is already connected to 
+the puzzle and still has unconnected sides. We will call this piece the focus piece. 
+If there are no such pieces the puzzle is complete. 
+2. Pick the first unconnected side along a clockwise direction (start at its left side) 
+of the focus piece and label it side 1. If there are no more unconnected sides go 
+to step 1. 
+3. Pick up a random unconnected puzzle piece (discarding pieces you have tried 
+before in conjunction with the current focus piece) and label it temporary piece. 
+4. Pick the first open side along a clockwise direction (start at its left side) 
+of the temporary piece discarding sides that you have already tried (with the 
+current focus-temporary pair) and label it side 2. If you have tried all sides 
+put the piece down and go to step 3. 
+5. Compare side 1 and side 2. If they fit go to step 2 else go to step 4. 
+
+
+Problem Solving 
+Problem Solving.  Word problems, which you need to convert to an algorithm which 
+you then have to code up. 
+Word Problem Algorithms Code in Python Class focus (50%) 
+Tutorials + self-study (50%) 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+1. Basic Programming 
+Concepts 
+•Why programming? 
+•Built-in data types 
+•Type conversion INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+Built-in data types 
+A data type  is a set of values and a set of operations on those values. 
+35type set of values sample literals operations 
+str sequences of characters 'Hello World' 
+"CS isn't fun" +
+int integers 17
+12345 +  -  *  //  %  ** 
+float floating-point numbers 3.1415 
+6.022e23 +  -  *  //  %  ** 
+bool truth values True 
+False and, or, not 
+Python's built-in data types 
+
+36Pop quiz on data types 
+Q. What is a data type? 
+
+37Pop quiz on data types 
+Q. What is a data type? 
+A. A set of values and a set of operations on those values. 
+
+38Basic Definitions 
+Variable is a name that refers to a data-type value. 
+Identifiers  is a Python-code representation of a name. 
+Literal  is a programming-language representation of a data-type value. 
+Assignment statement  using the = operator associates a data-type value with a variable. 
+Expression  is a combination of literals, variables, and operators that Python evaluates to produce a value. 
+The meaning of = in a program is NOT the same as in a mathematical equation. 
+
+
+39Objects 
+●Object .  An object is an in-computer-memory representation of a value from a particular data 
+type. 
+●Identity . Uniquely identifies an object (memory address) 
+●Type . The set of values it might represent and the set of operations that can be performed 
+on it. 
+●Value . The data-type value that it represents 
+●Object reference . An object reference is nothing more than a concrete representation of the 
+object’s identity (memory address). 
+
+
+40Expressions 
+Operators  specify data type operations on one or more operand. 
+Operand  can be any expression. 
+Binary  operators  take two expressions. 
+Precedence  multiplication and division before addition and subtraction. 
+Left-associativity a-b-c same as (a-b)-c. All operators except exponentiation. 
+Right-associativity  a**b**c same as a**(b**c). 
+Parenthesis  overrides precedence rules. 
+
+
+41Exercise: Definitions 
+Fill in the missing labels: 
+a = 0 
+c = a+1 
+c = c + b 
+c = (2*c)+4 
+C = 2 + d 
+A
+B
+C
+D
+E
+
+42Answer 
+Fill in the missing labels: 
+A → Assignment 
+B → Literal/Operand 
+C → Variable/Operand 
+D → Expression 
+E → Operator 
+   
+
+
+43Object Trace 
+Program behavior is typically understood using traces .
+Informal trace  table showing values after each line of the program. 
+Object trace shows variables, object references, and objects for each line of the 
+program.  An object trace example is below. 
+
+
+44Basic Conversions 
+str-to-int 
+int(“123”)  
+int(sys.argv[1]) 
+int-to-str 
+a = “123” 
+b = 99 
+c = int(a) + b 
+stdio.writeln(a+” + “+str(b)+” = ”+str(c)) 
+123 + 99 = 222 
+
+
+Text 
+
+
+46Data type for computing with strings: str (will use str and string) 
+values sequences of characters 
+typical literals 'Hello, '   '1 '   ' * ' 
+operation concatenate 
+operator +
+escape sequence '\t', '\n', '\\', and '\'' str data type 
+expression value 
+'Hi, ' + 'Bob' 'Hi, Bob' 
+'1' + ' 2 ' + '1' '1 2 1' 
+'1234' + ' + ' + '99' '1234 + 99' 
+'1234' + '99' '123499' 
+Typical use: Input and output. Examples of String  operations (concatenation) Important note: 
+Character interpretation depends on context! 
+'1234' + ' + ' + '99' Ex 1: plus signs 
+'1234' + ' + ' + '99' Ex 2: spaces character 
+operator operator 
+white space white space 
+space characters 
+
+Example of computing with strings: subdivisions of a ruler 
+47
+import stdio 
+ruler1 = '1' 
+ruler2 = ruler1 + ' 2 ' + ruler1 
+ruler3 = ruler2 + ' 3 ' + ruler2 
+ruler4 = ruler3 + ' 4 ' + ruler3 
+stdio.writeln(ruler1) 
+stdio.writeln(ruler2) 
+stdio.writeln(ruler3) 
+stdio.writeln(ruler4) 
+ ruler1 ruler2 ruler3 ruler4 
+ undeclared undeclared undeclared undeclared 
+ ruler1 = '1' 1 undeclared undeclared undeclared 
+ ruler2 = ruler1 + ' 2 ' + ruler1 1 1 2 1 undeclared undeclared 
+ ruler3 = ruler2 + ' 3 ' + ruler2 1 1 2 1 1 2 1 3 1 2 1 undeclared 
+ ruler4 = ruler3 + ' 4 ' + ruler3 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 
+% python3 Ruler.py 
+1
+1 2 1 
+1 2 1 3 1 2 1 
+1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 
+1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 all + ops are concatenation 
+
+48Exercise: Ruler 
+What does the following program print to the terminal? 
+
+
+49Answer 
+% python3 rulermodified.py 
+x * x # x * x * x * x # x * x "x * x" 
+"x * x # x * x" "x"
+string concatenation What does the following program print to the terminal? 
+
+
+Integers 
+…, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, … 
+
+51Integers 
+int data type  represents integers or natural numbers. 
+
+52Integer Operations 
+1234 = 246*5 + 4 
+command-line arguments 
+convert int to str 
+
+53Excercise: intops 
+% python3 intops.py 111 3 
+
+
+54Answer 
+% python3 intops.py 111 3 
+111 + 3 = 114 
+111 – 3 = 108 
+111 * 3 = 333 
+111 // 3 = 37 
+111 % 3 = 0 
+111 ** 3 = 1367631 
+
+
+Floating-Point Numbers 
+
+
+56Floating-Point Numbers 
+10.0-3*3.141 Scientific 
+notation 
+undefined 
+
+57Exercise: Mod 
+Compute 10.0%0.62e1 
+
+
+58Exercise: Mod 
+Compute 10.0%0.62e1 
+3.8 = 10.0-1*6.2 
+
+
+59Excerpts from Python’s Math Library 
+
+
+60Quadratic Equation 
+
+
+Booleans 
+
+
+62Booleans 
+● boolean data type  represents truth values (either true or false) from logic. 
+
+63Exercise: Booleans 
+What does the following program print to the terminal when executed? 
+
+
+64Answer 
+●stdio.write(str (x)) ->  False 
+●stdio.write (" "+ str (y)) -> False 
+●stdio.write (" "+ str (x ^ y)) -> False What does the following program print to the terminal when executed? 
+
+
+65Comparisons 
+Comparisons.  Take two operands of one type (e.g., int) and produce a result of type bool . Lower 
+precedence than arithmetic operators, higher than boolean operators. 
+
+
+66Leap Year 
+Q.  Is a given year a leap year? 
+A.  Yes if either (i) divisible by 400 or (ii) divisible by 4 but not 100. 
+
+
+67Example: Leap Year 
+((1900%4  == 0) && (1900 % 100 != 0)) || (1900 % 400 == 0) 
+=> ((0  == 0) && (0 != 0)) || (300 == 0) 
+=> (true && false) || false 
+=> false 
+% python3 leapyear.py 1900 
+false 
+
+
+68Exercise: Leap Year 
+((2000%4  == 0) && (2000 % 100 != 0)) || (2000 % 400 == 0) 
+COMPLETE…. 
+% python3 leapyear.py 2000 
+true 
+
+
+69Answer 
+((2000%4  == 0) && (2000 % 100 != 0)) || (2000 % 400 == 0) 
+=> ((0  == 0) && (0 != 0)) || (0 == 0) 
+=> (true && false) || true 
+=> true 
+% python3 leapyear.py 2000 
+true 
+
+Library Methods and API 
+
+
+71Library 
+Library.  Existing Python methods (module) written by someone else (grouped by topic). 
+API. Applications Programming Interface. Table summarizing 
+module methods. 
+
+
+72More... 
+Arguments. Inputs enclosed in parentheses and separated by commas following function name. 
+Python calls (or evaluates) the function with the given arguments and the function then returns  a 
+value. 
+standard function – part of standard Python modules pure function – consistent/no side effects built into Python 
+output other than return value 
+
+INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+1. Basic Programming 
+Concepts 
+•Why programming? 
+•Built-in data types 
+•Type conversion INTRO TO PROGRAMMING 
+IN PYTHON    
+ SEDGEWICK ・WAYNE ・DONDERO 
+
+Type Conversion 
+
+
+75Type Conversion 
+promotion CastType conversion . Convert value from one data type to another. 
+●Automatic / Implicit : no loss of precision (promotion); or with strings. 
+●Explicit : cast; or method. 
+●Casting  (higher precedence than arithmetic) 
+Method 
+String 
+Precedence 
+
+76Random Integer 
+Ex. Given N, generate a pseudo-random number between 0 and N-1. Why not N? 
+
+
+77
+Summary 
